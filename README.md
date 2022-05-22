@@ -17,4 +17,4 @@ samples, guidance on mobile development, and a full API reference.
 
 ## UI Design
 
-The UI designed inspired by (BMI Calculator App Neumorphism)[https://dribbble.com/shots/11368106-BMI-Calculator-App-Neumorphism] by Kevin Al-Rizal
+The UI designed inspired by [BMI Calculator App Neumorphism](https://dribbble.com/shots/11368106-BMI-Calculator-App-Neumorphism) by Kevin Al-Rizal
