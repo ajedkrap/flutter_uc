@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tugas_tiga/contants/bmi.dart';
+import 'package:tugas_tiga/widgets/neumorphism.dart';
 
 class ResultScreen extends StatefulWidget {
   const ResultScreen({Key? key, required this.bmiResult}): super(key:key);
@@ -31,24 +32,7 @@ class _ResultScreenState extends State<ResultScreen> {
                 child: Container(
                   height: 42,
                   width: 42,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(42),
-                    color: CustomColor.brightGrey ,
-                    boxShadow: const <BoxShadow>[
-                        BoxShadow(
-                          color: Colors.grey,
-                          offset:  Offset(4, 4),
-                          blurRadius: 8,
-                          spreadRadius: 1,
-                        ),
-                        BoxShadow(
-                          color: Colors.white,
-                          offset:  Offset(-4, -4),
-                          blurRadius: 8,
-                          spreadRadius: 1,
-                        )
-                    ]
-                  ),
+                  decoration: neumorphism(42, 4, 8, 1),
                   child: const Center(
                     child: Icon(
                       Icons.chevron_left, color: CustomColor.rhythm
@@ -74,24 +58,7 @@ class _ResultScreenState extends State<ResultScreen> {
              child: Container(
               height: 42,
               width: 42,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(42),
-                color: CustomColor.brightGrey ,
-                boxShadow: const <BoxShadow>[
-                    BoxShadow(
-                      color: Colors.grey,
-                      offset:  Offset(4, 4),
-                      blurRadius: 6,
-                      spreadRadius: 1,
-                    ),
-                    BoxShadow(
-                      color: Colors.white,
-                      offset:  Offset(-4, -4),
-                      blurRadius: 6,
-                      spreadRadius: 1,
-                    )
-                ]
-              ),
+              decoration: neumorphism(42, 4, 6, 1),
               child: const Center(
                 child: Icon(
                   Icons.person_outline, color: CustomColor.rhythm
@@ -116,24 +83,7 @@ class _ResultScreenState extends State<ResultScreen> {
                       Container(
                         height: gaugeSize,
                         width: gaugeSize,
-                        decoration:  BoxDecoration(
-                          borderRadius: BorderRadius.circular(gaugeSize),
-                          color: CustomColor.brightGrey,
-                          boxShadow: const <BoxShadow>[
-                              BoxShadow(
-                                color: Colors.grey,
-                                offset:  Offset(4, 4),
-                                blurRadius: 18,
-                                spreadRadius: 1,
-                              ),
-                              BoxShadow(
-                                color: Colors.white,
-                                offset:  Offset(-4, -4),
-                                blurRadius: 18,
-                                spreadRadius: 1,
-                              )
-                          ]
-                        ),
+                        decoration: neumorphism(gaugeSize, 4, 18, 1),
                         child: Padding(
                           padding: const EdgeInsets.all(18.0),
                             child: TweenAnimationBuilder(

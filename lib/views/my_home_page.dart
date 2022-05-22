@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tugas_tiga/views/result_screen.dart';
+import 'package:tugas_tiga/widgets/neumorphism.dart';
 import '../contants/bmi.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -53,24 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
               child: Container(
                 height: 42,
                 width: 42,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(42),
-                  color: CustomColor.brightGrey ,
-                  boxShadow: const <BoxShadow>[
-                      BoxShadow(
-                        color: Colors.grey,
-                        offset:  Offset(4, 4),
-                        blurRadius: 8,
-                        spreadRadius: 1,
-                      ),
-                      BoxShadow(
-                        color: Colors.white,
-                        offset:  Offset(-4, -4),
-                        blurRadius: 8,
-                        spreadRadius: 1,
-                      )
-                  ]
-                ),
+                decoration: neumorphism(42, 4, 8, 1),
                 child: const Center(
                   child: Icon(
                     Icons.apps, color: CustomColor.rhythm
@@ -95,24 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
              child: Container(
               height: 42,
               width: 42,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(42),
-                color: CustomColor.brightGrey ,
-                boxShadow: const <BoxShadow>[
-                    BoxShadow(
-                      color: Colors.grey,
-                      offset:  Offset(4, 4),
-                      blurRadius: 6,
-                      spreadRadius: 1,
-                    ),
-                    BoxShadow(
-                      color: Colors.white,
-                      offset:  Offset(-4, -4),
-                      blurRadius: 6,
-                      spreadRadius: 1,
-                    )
-                ]
-              ),
+              decoration: neumorphism(42, 4, 6, 1),
               child: const Center(
                 child: Icon(
                   Icons.person_outline, color: CustomColor.rhythm
@@ -147,29 +114,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: GestureDetector(
                               onTap: () => _onSettingState(() => person.gender = 'male'),
                               child: Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(18.0),
-                                gradient:  LinearGradient(
-                                  begin: Alignment.centerLeft,
-                                  stops: person.gender == 'male'? [0.0, 0.8] : [0.0],
-                                  end: Alignment.centerRight,
-                                  colors: person.gender =='male' ? <Color>[CustomColor.seaSerpent, CustomColor.seaSerpent2] : [CustomColor.brightGrey]
-                                ),
-                                boxShadow: const <BoxShadow>[
-                                  BoxShadow(
-                                    color: Colors.grey,
-                                    offset:  Offset(4, 4),
-                                    blurRadius: 4,
-                                    spreadRadius: 1,
-                                  ),
-                                  BoxShadow(
-                                    color: Colors.white,
-                                    offset:  Offset(-4, -4),
-                                    blurRadius: 4,
-                                    spreadRadius: 1,
-                                  )
-                                ]
-                              ),
+                              decoration: genderNeumorphism(person.gender == 'male'),
                               child: Center(
                                 child: Text(
                                   "Male",
@@ -191,29 +136,7 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Padding(
                               padding: const EdgeInsets.all(12.0),
                               child: Container(
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(18.0),
-                                  gradient:  LinearGradient(
-                                    begin: Alignment.centerLeft,
-                                    stops: person.gender == 'female'? [0.0, 0.8] : [0.0],
-                                    end: Alignment.centerRight,
-                                    colors: person.gender == 'female' ? <Color>[CustomColor.seaSerpent, CustomColor.seaSerpent2] : [CustomColor.brightGrey]
-                                  ),
-                                  boxShadow: const <BoxShadow>[
-                                    BoxShadow(
-                                      color: Colors.grey,
-                                      offset:  Offset(4, 4),
-                                      blurRadius: 4,
-                                      spreadRadius: 1,
-                                    ),
-                                    BoxShadow(
-                                      color: Colors.white,
-                                      offset:  Offset(-4, -4),
-                                      blurRadius: 4,
-                                      spreadRadius: 1,
-                                    )
-                                  ]
-                                ),
+                                decoration: genderNeumorphism(person.gender == 'female'),
                                 child: Center(
                                   child: Text(
                                     "Female",
@@ -240,73 +163,56 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: Padding(
                               padding: const EdgeInsets.all(12.0),
                                 child: Container(
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(18.0),
-                                    color: CustomColor.brightGrey ,
-                                    boxShadow: const <BoxShadow>[
-                                      BoxShadow(
-                                        color: Colors.grey,
-                                        offset:  Offset(4, 4),
-                                        blurRadius: 4,
-                                        spreadRadius: 1,
-                                      ),
-                                      BoxShadow(
-                                        color: Colors.white,
-                                        offset:  Offset(-4, -4),
-                                        blurRadius: 4,
-                                        spreadRadius: 1,
-                                      )
-                                    ]
-                                  ),
-                                child: Column (
-                                  children:  [
-                                     const SizedBox(
-                                      height: 48,
-                                      child: Center(
-                                        child: Text(
-                                          'Height',
-                                          style: TextStyle(
-                                            fontSize: 20,
-                                            color: CustomColor.rhythm
+                                  decoration: neumorphism(18.0, 4, 4, 1),
+                                  child: Column (
+                                    children:  [
+                                      const SizedBox(
+                                        height: 48,
+                                        child: Center(
+                                          child: Text(
+                                            'Height',
+                                            style: TextStyle(
+                                              fontSize: 20,
+                                              color: CustomColor.rhythm
+                                            )
                                           )
                                         )
-                                      )
-                                    ),
-                                    Expanded(
-                                      child: Row(
-                                        children: [
-                                          Expanded(
-                                            child: RotatedBox(
-                                              quarterTurns: 3,
-                                              child: Slider(
-                                                  value: person.height.toDouble(),
-                                                  thumbColor: Colors.white,
-                                                  activeColor: CustomColor.seaSerpent2,
-                                                  inactiveColor: CustomColor.unselected,
-                                                  min: 130.0,
-                                                  max: 230.0,
-                                                  onChanged: (double newValue) => _onSettingState(() => person.height = newValue.round()),
-                                                )
-                                            )
-                                          ),
-                                          Expanded(
-                                            child:
-                                              Container(
-                                                alignment: Alignment.centerLeft,
-                                                child: Text(
-                                                  '${person.height}',
-                                                  style: const TextStyle(
-                                                    fontSize: 36,
-                                                    color: CustomColor.rhythm
+                                      ),
+                                      Expanded(
+                                        child: Row(
+                                          children: [
+                                            Expanded(
+                                              child: RotatedBox(
+                                                quarterTurns: 3,
+                                                child: Slider(
+                                                    value: person.height.toDouble(),
+                                                    thumbColor: Colors.white,
+                                                    activeColor: CustomColor.seaSerpent2,
+                                                    inactiveColor: CustomColor.unselected,
+                                                    min: 130.0,
+                                                    max: 230.0,
+                                                    onChanged: (double newValue) => _onSettingState(() => person.height = newValue.round()),
+                                                  )
+                                              )
+                                            ),
+                                            Expanded(
+                                              child:
+                                                Container(
+                                                  alignment: Alignment.centerLeft,
+                                                  child: Text(
+                                                    '${person.height}',
+                                                    style: const TextStyle(
+                                                      fontSize: 36,
+                                                      color: CustomColor.rhythm
+                                                    )
                                                   )
                                                 )
-                                              )
-                                          )
-                                        ],
+                                            )
+                                          ],
+                                        )
                                       )
-                                    )
-                                  ],
-                                )
+                                    ],
+                                  )
                                 )
                             )
                           ),
@@ -318,26 +224,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                   children: [
                                     // WEIGHT
                                     Expanded(
-                                      flex:6,
+                                      flex: 6,
                                       child: Container(
-                                        decoration: BoxDecoration(
-                                          borderRadius: BorderRadius.circular(18.0),
-                                          color: CustomColor.brightGrey ,
-                                          boxShadow: const <BoxShadow>[
-                                            BoxShadow(
-                                              color: Colors.grey,
-                                              offset:  Offset(4, 4),
-                                              blurRadius: 4,
-                                              spreadRadius: 1,
-                                            ),
-                                            BoxShadow(
-                                              color: Colors.white,
-                                              offset:  Offset(-4, -4),
-                                              blurRadius: 4,
-                                              spreadRadius: 1,
-                                            )
-                                          ]
-                                        ),
+                                        decoration: neumorphism(18.0, 4, 4, 1),
                                          child: Column(
                                            children: [
                                             const SizedBox(
@@ -375,24 +264,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     child: Container(
                                                       height: 42,
                                                       width: 42,
-                                                      decoration: BoxDecoration(
-                                                        borderRadius: BorderRadius.circular(42),
-                                                        color: CustomColor.brightGrey ,
-                                                        boxShadow: const <BoxShadow>[
-                                                            BoxShadow(
-                                                              color: Colors.grey,
-                                                              offset:  Offset(4, 4),
-                                                              blurRadius: 4,
-                                                              spreadRadius: 1,
-                                                            ),
-                                                            BoxShadow(
-                                                              color: Colors.white,
-                                                              offset:  Offset(-4, -4),
-                                                              blurRadius: 4,
-                                                              spreadRadius: 1,
-                                                            )
-                                                        ]
-                                                      ),
+                                                      decoration: neumorphism(42, 4, 4, 1),
                                                       child: const Center(
                                                         child: Icon(
                                                           Icons.remove, color: CustomColor.rhythm
@@ -402,28 +274,10 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   ),
                                                   GestureDetector(
                                                     onTap: () => _onSettingState(() => person.setWeight(true)),
-
                                                     child: Container(
                                                       height: 42,
                                                       width: 42,
-                                                      decoration: BoxDecoration(
-                                                        borderRadius: BorderRadius.circular(42),
-                                                        color: CustomColor.brightGrey ,
-                                                        boxShadow: const <BoxShadow>[
-                                                            BoxShadow(
-                                                              color: Colors.grey,
-                                                              offset:  Offset(4, 4),
-                                                              blurRadius: 4,
-                                                              spreadRadius: 1,
-                                                            ),
-                                                            BoxShadow(
-                                                              color: Colors.white,
-                                                              offset:  Offset(-4, -4),
-                                                              blurRadius: 4,
-                                                              spreadRadius: 1,
-                                                            )
-                                                        ]
-                                                      ),
+                                                      decoration:neumorphism(42, 4, 4, 1),
                                                       child: const Center(
                                                         child: Icon(
                                                           Icons.add, color: CustomColor.rhythm
@@ -443,24 +297,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                     Expanded(
                                       flex:6,
                                        child: Container(
-                                          decoration: BoxDecoration(
-                                            borderRadius: BorderRadius.circular(18.0),
-                                            color: CustomColor.brightGrey ,
-                                            boxShadow: const <BoxShadow>[
-                                              BoxShadow(
-                                                color: Colors.grey,
-                                                offset:  Offset(4, 4),
-                                                blurRadius: 4,
-                                                spreadRadius: 1,
-                                              ),
-                                              BoxShadow(
-                                                color: Colors.white,
-                                                offset:  Offset(-4, -4),
-                                                blurRadius: 4,
-                                                spreadRadius: 1,
-                                              )
-                                            ]
-                                        ),
+                                        decoration: neumorphism(18, 4, 4, 1),
                                         child: Column(
                                           children: [
                                             const SizedBox(
@@ -498,24 +335,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                                     child: Container(
                                                       height: 42,
                                                       width: 42,
-                                                      decoration: BoxDecoration(
-                                                        borderRadius: BorderRadius.circular(42),
-                                                        color: CustomColor.brightGrey ,
-                                                        boxShadow: const <BoxShadow>[
-                                                            BoxShadow(
-                                                              color: Colors.grey,
-                                                              offset:  Offset(4, 4),
-                                                              blurRadius: 4,
-                                                              spreadRadius: 1,
-                                                            ),
-                                                            BoxShadow(
-                                                              color: Colors.white,
-                                                              offset:  Offset(-4, -4),
-                                                              blurRadius: 4,
-                                                              spreadRadius: 1,
-                                                            )
-                                                        ]
-                                                      ),
+                                                      decoration: neumorphism(42, 4, 4, 1),
+                                                      
                                                       child: const Center(
                                                         child: Icon(
                                                           Icons.remove, color: CustomColor.rhythm
@@ -525,33 +346,17 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   ),
                                                   GestureDetector(
                                                     onTap: () => _onSettingState(() => person.setAge(true)),
-                                                    child: Container(
-                                                    height: 42,
-                                                    width: 42,
-                                                    decoration: BoxDecoration(
-                                                      borderRadius: BorderRadius.circular(42),
-                                                      color: CustomColor.brightGrey ,
-                                                      boxShadow: const <BoxShadow>[
-                                                          BoxShadow(
-                                                            color: Colors.grey,
-                                                            offset:  Offset(4, 4),
-                                                            blurRadius: 4,
-                                                            spreadRadius: 1,
-                                                          ),
-                                                          BoxShadow(
-                                                            color: Colors.white,
-                                                            offset:  Offset(-4, -4),
-                                                            blurRadius: 4,
-                                                            spreadRadius: 1,
-                                                          )
-                                                      ]
-                                                    ),
-                                                    child: const Center(
-                                                      child: Icon(
-                                                        Icons.add, color: CustomColor.rhythm
+                                                      child: Container(
+                                                      height: 42,
+                                                      width: 42,
+                                                      decoration: neumorphism(42, 4, 4, 1),
+                                                      child: const Center(
+                                                        child: Icon(
+                                                          Icons.add, color: CustomColor.rhythm
+                                                        )
                                                       )
                                                     )
-                                                  ))
+                                                  )
                                                 ]
                                               )
                                             )
