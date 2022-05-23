@@ -13,12 +13,8 @@ class CustomColor {
   static const Color rhythm = Color(0xFF767C94);
   static const Color text = Color(0xFFFCFFFE);
 
-  static const Color raspberry = Color(0xFFFE0167);
-  static const Color cetacean  = Color(0xFF0C1234);
-  static const Color yankees = Color(0xFF13193B);
   static const Color unselected = Color(0xFFB7B9C8);
   static const Color selected = Color(0xFFFEFDFF);
-  // static const Color text = Color(0xFFFCFFFE);
 
   static Color getBmiColor (double bmiNumber){
     if(bmiNumber >= 2.75) { return CustomColor.overweight;}
